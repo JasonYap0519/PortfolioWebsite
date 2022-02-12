@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Playfair+Display"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>My Portfolio</title>
+  </head>
+  <body>
+    <header>
+      <ul class="navbar">
+        <li><a href="#" class="link">Home</a></li>
+        <li><a href="#about" class="link">About</a></li>
+        <li><a href="#project" class="link">Projects</a></li>
+        <li><a href="#additional" class="link">Contact</a></li>
+      </ul>
+    </header>
+    <main>
+      <div class="introduction">
+        <h1>Hello, I am Jason Yap</h1>
+        <p>Computer Science Comprehensive Major Student</p>
+      </div>
+      <section class="about" id="about">
+        <div class="description">
+          <h2>About Me</h2>
+          <p>
+            Being as a Computer Science Student, I got to learn a variety of
+            programming languages, where I found my interests on front-end
+            development. The exposure of front-end development had bring me an
+            tremendous impact on my journey. I believe that it is important to
+            deliver a product that cater towards clients' needs. Besides, I
+            enjoy designing visuals that are aesthetically pleasing and
+            professional.
+          </p>
+        </div>
+        <div class="photo">
+          <img src="images/jasonyap.jpg" alt="" />
+        </div>
+      </section>
+      <section class="project" id="project">
+        <h2>Projects</h2>
+        <div class="project-flex">
+          <div class="image-wrap">
+            <img src="images/clock.png" alt="" width="320" height="320" />
+            <div class="image-content">
+              <p>
+                Implemented a real time clock system using
+                <strong>Javascript</strong>
+                for functionalities and
+                <strong>CSS</strong>
+                to design the entire clock, applying different styles to its
+                hour hand, minute hand, and second hand.
+              </p>
+              <p><a href="#" class="link" id="project-link">Source Code</a></p>
+            </div>
+            <h3>Real Time Clock</h3>
+          </div>
+
+          <div class="image-wrap">
+            <img src="images/dice.png" alt="" width="320" height="320" />
+            <div class="image-content">
+              <p>
+                A turn-based two player game which uses
+                <strong>Javascript</strong> to create game logic. Applied
+                <strong>CSS</strong> to create user interface.
+              </p>
+              <p><a href="#" class="link" id="project-link">Source Code</a></p>
+            </div>
+            <h3>Dice Game</h3>
+          </div>
+          <div class="image-wrap">
+            <img src="images/guess.png" alt="" width="320" height="320" />
+            <div class="image-content">
+              <p>
+                A simple <strong>Javascript</strong> game where users have to
+                guess the correct number. Hints will be given if the player
+                guesses wrong and the correct number will be reseted once the
+                page is refreshed.
+              </p>
+              <p><a href="#" class="link" id="project-link">Source Code</a></p>
+            </div>
+            <h3>Guessing Game</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="additional" id="additional">
+        <div class="contact">
+          <h2>Contact</h2>
+          <form action="/">
+            <div>
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" placeholder="Name" />
+            </div>
+            <div>
+              <label for="">Email</label>
+              <input type="email" name="email" id="email" placeholder="Email" />
+            </div>
+            <textarea
+              name="message"
+              id="message"
+              cols="30"
+              rows="10"
+              placeholder="Leave your message here"
+            ></textarea>
+            <button>Submit</button>
+          </form>
+        </div>
+        <div class="social">
+          <h2>Check me out on</h2>
+          <ul>
+            <li>
+              <a href="https://www.linkedin.com/in/jason-yap-561156207/"
+                ><img src="images/linkedin.png" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="https://github.com/JasonYap0519"
+                ><img src="images/github.png" alt=""
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <footer>
+        <div class="copyright">
+          &copy; 2022 | Designed & Implemented by Jason Yap
+        </div>
+      </footer>
+    </main>
+    <footer></footer>
+  </body>
+</html>

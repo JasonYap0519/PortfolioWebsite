@@ -1,0 +1,304 @@
+* {
+  box-sizing: border-box;
+  font-family: "Playfair Display";
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+footer {
+  background-color: #05386b;
+  padding-bottom: 10px;
+  color: white;
+}
+
+/* navigation links */
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: transparent;
+  margin: 0;
+  padding: 1%;
+  position: fixed;
+  z-index: 2;
+}
+
+.navbar li {
+  display: inline;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  list-style-type: none;
+}
+
+.link {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  font-size: 1.15rem;
+  font-weight: bold;
+  text-shadow: black 0 2px 5px;
+}
+
+.link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover::before {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
+
+/* intro section */
+
+.introduction {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("images/background.jpg") no-repeat center;
+  background-size: cover;
+  padding: 15% 22.5% 20% 22.5%;
+  text-align: center;
+  font-size: 2.5rem;
+  text-shadow: black 0 2px 5px;
+  color: white;
+}
+
+.introduction p {
+  font-size: 2rem;
+}
+
+/* about section */
+
+.about {
+  background-color: #05386b;
+  padding: 5% 5% 5% 5%;
+  color: white;
+  display: flex;
+  flex: 1 1 0;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.about h2 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.description {
+  width: 50%;
+  padding-right: 5%;
+}
+
+.description p {
+  font-size: 1.25rem;
+}
+
+.photo {
+  margin-top: 0.83em;
+  text-align: center;
+}
+
+.photo img {
+  border-radius: 200px;
+}
+
+/* project section */
+
+.project {
+  background-color: #edf5e1;
+  padding: 2% 5% 20% 5%;
+}
+
+.project h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 0;
+}
+
+.project-flex {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.project-flex h3 {
+  margin-top: 3%;
+  font-size: 1.5rem;
+}
+
+.image-wrap {
+  position: relative;
+}
+
+.image-wrap img {
+  border-radius: 20px;
+  box-shadow: black 0 2px 5px;
+}
+
+.image-content {
+  position: absolute;
+  text-align: center;
+  height: 320px;
+  border-radius: 20px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 1.4rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.75);
+  visibility: hidden;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+}
+
+.image-content p {
+  margin-top: 0;
+}
+
+.image-wrap:hover .image-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+#project-link {
+  color: black;
+  text-shadow: none;
+}
+
+#project-link:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #project-link:hover::before {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
+
+.additional {
+  background-color: #05386b;
+  padding: 2%;
+  display: flex;
+  padding-bottom: 10%;
+  color: white;
+}
+
+.additional div {
+  flex: 1 1 0;
+}
+
+.contact,
+.social {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.contact h2,
+.social h2 {
+  font-size: 2rem;
+}
+
+.social ul {
+  list-style-type: none;
+  display: inline-flex;
+  padding: 0;
+}
+
+.social ul li {
+  margin-right: 20%;
+}
+
+form {
+  display: flexbox;
+  flex-wrap: wrap;
+}
+
+label {
+  visibility: hidden;
+}
+
+input {
+  width: 100%;
+  background: transparent;
+  margin-bottom: 40px;
+  font-size: 1.5rem;
+  border: solid white 1px;
+  border-radius: 5px;
+  color: white;
+  padding: 2%;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+textarea {
+  margin-top: 20px;
+  width: 100%;
+  background: transparent;
+  resize: vertical;
+  border: solid white 1px;
+  border-radius: 5px;
+  color: white;
+  padding: 2%;
+  font-size: 1.5rem;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.5;
+  font-size: 1.5rem;
+}
+
+button {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  padding: 1% 2%;
+  color: white;
+  border: solid white 1px;
+  border-radius: 5px;
+  background-color: #05386b;
+  transition: width 1s;
+  width: 20%;
+}
+
+button:hover {
+  width: 30%;
+}
+
+button:active {
+  background-color: white;
+  color: black;
+}
+
+.copyright {
+  text-align: center;
+}
