@@ -185,7 +185,6 @@ footer {
 }
 
 .image-wrap img {
-  border-radius: 20px;
   box-shadow: black 0 2px 5px;
 }
 
@@ -193,7 +192,6 @@ footer {
   position: absolute;
   text-align: center;
   height: 320px;
-  border-radius: 20px;
   top: 0;
   bottom: 0;
   left: 0;
