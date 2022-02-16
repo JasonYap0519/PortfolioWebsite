@@ -67,7 +67,13 @@ footer {
   }
 }
 
-/* intro section */
+/* Start of intro section */
+.intro-flex {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
 
 .introduction {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -83,9 +89,18 @@ footer {
 .introduction p {
   font-size: 2rem;
 }
+/* End of intro section */
 
-/* Typewriting Effect */
 @media (min-width: 1024px) {
+  .introduction {
+    padding: 15% 20% 20% 20%;
+  }
+
+  .project-title-md {
+    display: none;
+  }
+
+  /* Start of Typewriting Effect */
   #intro-title {
     overflow: hidden;
     white-space: nowrap;
@@ -97,7 +112,7 @@ footer {
   #intro-description {
     overflow: hidden;
     white-space: nowrap;
-    width: 0.01%;
+    width: 0;
     animation: typing 2s steps(40, end) forwards;
     animation-delay: 2s;
   }
@@ -115,10 +130,78 @@ footer {
       width: 100%;
     }
   }
+  /* End of Typewriting Effect */
+
+  /* Start of text image hovering Effect */
+  .image-wrap {
+    position: relative;
+  }
+
+  .image-wrap img {
+    box-shadow: black 0 2px 5px;
+  }
+
+  .image-content {
+    position: absolute;
+    text-align: center;
+    height: 320px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 1.4rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.75);
+    visibility: hidden;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    max-width: 320px;
+  }
+
+  .image-content p {
+    margin-top: 0;
+  }
+
+  .image-wrap:hover .image-content {
+    visibility: visible;
+    opacity: 1;
+  }
+  /* End of text image hovering Effect */
+
+  /* Start of project link animation Effect */
+  #project-link:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    #project-link:hover::before {
+      left: 0;
+      right: auto;
+      width: 100%;
+    }
+  }
+
+  .submit,
+  .resume {
+    transition: width 1s;
+    width: 10rem;
+  }
+
+  .submit:hover,
+  .resume:hover {
+    width: 15rem;
+  }
+  /* End of project link animation Effect */
 }
 
-/* about section */
-
+/* Start of about section */
 .about {
   background-color: #05386b;
   padding: 5% 5% 5% 5%;
@@ -151,9 +234,9 @@ footer {
 .photo img {
   border-radius: 200px;
 }
+/* End of about section */
 
-/* project section */
-
+/* Start of project section */
 .project {
   background-color: #edf5e1;
   padding: 2% 5% 10% 5%;
@@ -180,64 +263,13 @@ footer {
   max-width: 320px;
 }
 
-.image-wrap {
-  position: relative;
-}
-
-.image-wrap img {
-  box-shadow: black 0 2px 5px;
-}
-
-.image-content {
-  position: absolute;
-  text-align: center;
-  height: 320px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  font-size: 1.4rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.75);
-  visibility: hidden;
-  opacity: 0;
-  transition: 200ms ease-in-out;
-  max-width: 320px;
-}
-
-.image-content p {
-  margin-top: 0;
-}
-
-.image-wrap:hover .image-content {
-  visibility: visible;
-  opacity: 1;
-}
-
 #project-link {
   color: black;
   text-shadow: none;
 }
+/* End of project section */
 
-#project-link:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 0;
-  height: 2px;
-  background-color: black;
-  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  #project-link:hover::before {
-    left: 0;
-    right: auto;
-    width: 100%;
-  }
-}
-
+/* Start of contact & additional section */
 .additional {
   background-color: #05386b;
   padding: 2% 5%;
@@ -320,6 +352,10 @@ input:focus::placeholder {
   color: transparent;
 }
 
+.resume {
+  margin-top: 10px;
+}
+
 .submit,
 .resume {
   margin-top: 20px;
@@ -329,17 +365,6 @@ input:focus::placeholder {
   border: solid white 1px;
   border-radius: 5px;
   background-color: #05386b;
-  transition: width 1s;
-  width: 30%;
-}
-
-.resume {
-  margin-top: 10px;
-}
-
-.submit:hover,
-.resume:hover {
-  width: 40%;
 }
 
 .submit:active,
@@ -350,4 +375,50 @@ input:focus::placeholder {
 
 .copyright {
   text-align: center;
+}
+/* End of contact & additional section */
+
+@media (max-width: 1023.5px) and (min-width: 425px) {
+  #intro-title {
+    font-size: 4rem;
+  }
+
+  #intro-description {
+    font-size: 1.5rem;
+  }
+
+  .project-flex h3 {
+    margin-top: 0;
+    max-width: fit-content;
+  }
+
+  .image-wrap {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 5%;
+  }
+
+  .image-content {
+    text-align: left;
+    padding-left: 5%;
+  }
+
+  .project h2 {
+    text-align: left;
+    margin-left: 4%;
+  }
+
+  .project-title-md {
+    display: block;
+    margin-top: 0;
+  }
+
+  .project-title-lg {
+    display: none;
+  }
+
+  .submit,
+  .resume {
+    width: 10rem;
+  }
 }
