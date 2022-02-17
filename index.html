@@ -16,13 +16,35 @@
     <title>My Portfolio</title>
   </head>
   <body>
-    <header>
-      <ul class="navbar">
-        <li><a href="#" class="link">Home</a></li>
-        <li><a href="#about" class="link">About</a></li>
-        <li><a href="#project" class="link">Projects</a></li>
-        <li><a href="#additional" class="link">Contact</a></li>
-      </ul>
+    <header id="header">
+      <div></div>
+      <nav>
+        <ul class="navbar-lg">
+          <li><a href="#" class="link">Home</a></li>
+          <li><a href="#about" class="link">About</a></li>
+          <li><a href="#project" class="link">Projects</a></li>
+          <li><a href="#additional" class="link">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- <nav>
+        <ul class="navbar">
+          <li><a href="#" class="link">Home</a></li>
+          <li><a href="#about" class="link">About</a></li>
+          <li><a href="#project" class="link">Projects</a></li>
+          <li><a href="#additional" class="link">Contact</a></li>
+        </ul>
+      </nav> -->
+      <div id="hamburger-icon" onclick="toggleMenu(this);">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <ul class="mobile-menu">
+          <li><a href="#" class="link">Home</a></li>
+          <li><a href="#about" class="link">About</a></li>
+          <li><a href="#project" class="link">Projects</a></li>
+          <li><a href="#additional" class="link">Contact</a></li>
+        </ul>
+      </div>
     </header>
     <main>
       <div class="introduction">
@@ -135,6 +157,18 @@
                 <strong>Bootstrap</strong> and uses HTTP request methods to
                 manipulate data from the server side.
               </p>
+              <p>
+                <a
+                  class="link"
+                  id="project-link"
+                  style="
+                    pointer-events: none;
+                    text-decoration: none;
+                    color: grey;
+                  "
+                  >Private</a
+                >
+              </p>
             </div>
             <h3 class="project-title-lg">Remote Patient Monitoring System</h3>
           </div>
@@ -176,26 +210,30 @@
           </form>
         </div>
         <div class="social">
-          <h2>Check me out on</h2>
-          <ul>
-            <li>
-              <a href="https://www.linkedin.com/in/jason-yap-561156207/"
-                ><img src="images/linkedin.png" alt=""
-              /></a>
-            </li>
-            <li>
-              <a href="https://github.com/JasonYap0519"
-                ><img src="images/github.png" alt=""
-              /></a>
-            </li>
-          </ul>
-          <h2>Additional Information</h2>
-          <button
-            class="resume"
-            onclick="location.href='https://drive.google.com/file/d/1wEZg9chiM7KrO-AxzvUHgsZTCOJ7HOi2/view?usp=sharing'"
-          >
-            My Resume
-          </button>
+          <div class="social-media">
+            <h2>Check me out on</h2>
+            <ul>
+              <li>
+                <a href="https://www.linkedin.com/in/jason-yap-561156207/"
+                  ><img src="images/linkedin.png" alt=""
+                /></a>
+              </li>
+              <li>
+                <a href="https://github.com/JasonYap0519"
+                  ><img src="images/github.png" alt=""
+                /></a>
+              </li>
+            </ul>
+          </div>
+          <div class="my-resume">
+            <h2>Additional Information</h2>
+            <button
+              class="resume"
+              onclick="location.href='https://drive.google.com/file/d/1wEZg9chiM7KrO-AxzvUHgsZTCOJ7HOi2/view?usp=sharing'"
+            >
+              My Resume
+            </button>
+          </div>
         </div>
       </section>
       <footer>

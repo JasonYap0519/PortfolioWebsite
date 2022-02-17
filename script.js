@@ -1,5 +1,6 @@
 "use strict";
 
+// reset contact form after submitting
 var form = document.getElementById("my-form");
 
 window.onbeforeunload = () => {
@@ -8,6 +9,28 @@ window.onbeforeunload = () => {
   }
 };
 
+// function for toggling hamburger dropdown
+function toggleMenu(menu) {
+  menu.classList.toggle("open");
+}
+
+// sticky header functionality
+window.onscroll = function () {
+  toggleSticky();
+};
+
+let header = document.getElementById("header");
+let sticky = header.offsetTop;
+
+function toggleSticky() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+
+// console.log(navbar);
 // async function handleSubmit(event) {
 //   event.preventDefault();
 //   var status = document.getElementById("my-form-status");
