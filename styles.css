@@ -167,7 +167,7 @@ header a {
 }
 
 .introduction p {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 /* End of intro section */
 
@@ -472,7 +472,7 @@ input:focus::placeholder {
   }
 
   #intro-description {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .project-flex h3 {
@@ -542,7 +542,7 @@ input:focus::placeholder {
   }
 
   #intro-description {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
   }
 
   .about {
