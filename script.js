@@ -10,9 +10,35 @@ window.onbeforeunload = () => {
 };
 
 // function for toggling hamburger dropdown
-function toggleMenu(menu) {
-  menu.classList.toggle("open");
-}
+// function toggleMenu(menu) {
+//   menu.classList.toggle("open");
+// }
+
+$("#hamburger-icon").click(function () {
+  $("#hamburger-icon").toggleClass("open");
+
+  $(".mobile-menu").click(function (e) {
+    e.stopPropagation();
+  });
+});
+
+$(document).click(function (e) {
+  const menu = $("#hamburger-icon");
+  // if the event target is not the menu and its open
+  if (
+    !menu.is(e.target) &&
+    menu.has(e.target).length === 0 &&
+    menu.hasClass("open")
+  ) {
+    $("#hamburger-icon").toggleClass("open");
+    console.log("close");
+
+    // the event target id is the header, the menu stays open
+    if (e.target.id === "header") {
+      $("#hamburger-icon").toggleClass("open");
+    }
+  }
+});
 
 // sticky header functionality
 window.onscroll = function () {
