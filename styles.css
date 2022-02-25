@@ -289,7 +289,6 @@ header a {
   color: white;
   display: flex;
   flex: 1 1 0;
-  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
@@ -582,5 +581,24 @@ input:focus::placeholder {
   .submit,
   .resume {
     width: 100%;
+  }
+}
+
+@media (min-height: 320px) and (max-height: 426px) {
+  .open .mobile-menu {
+    height: calc(100vh - 50vh);
+  }
+
+  .mobile-menu li {
+    margin-top: 0;
+    margin-bottom: 1%;
+  }
+
+  .introduction {
+    padding: 2rem;
+  }
+
+  .description {
+    width: auto;
   }
 }

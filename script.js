@@ -40,6 +40,10 @@ $(document).click(function (e) {
   }
 });
 
+$(".link").click(function () {
+  $("#hamburger-icon").toggleClass("open");
+});
+
 // sticky header functionality
 window.onscroll = function () {
   toggleSticky();
