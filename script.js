@@ -31,7 +31,6 @@ $(document).click(function (e) {
     menu.hasClass("open")
   ) {
     $("#hamburger-icon").toggleClass("open");
-    console.log("close");
 
     // the event target id is the header, the menu stays open
     if (e.target.id === "header") {
