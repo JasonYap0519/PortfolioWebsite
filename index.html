@@ -4,27 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#121722" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Playfair+Display"
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nunito:wght@400;600;700&display=swap"
     />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <title>My Portfolio</title>
+    <title>Jason Yap | Front-End Developer Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio of Jason Yap, a Front-End Developer building responsive, user-friendly web interfaces with React, JavaScript, and TypeScript."
+    />
     <link rel="icon" type="image/x-icon" href="images/jason.png" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <header id="header">
       <div></div>
       <nav>
         <ul class="navbar-lg">
-          <li><a href="#" class="link">Home</a></li>
+          <li><a href="#home" class="link">Home</a></li>
+          <li><a href="#featured" class="link">Featured Work</a></li>
+          <li><a href="#work" class="link">Work Experience</a></li>
+          <li><a href="#skills" class="link">Skills</a></li>
           <li><a href="#about" class="link">About</a></li>
-          <li><a href="#project" class="link">Projects</a></li>
           <li><a href="#additional" class="link">Contact</a></li>
         </ul>
       </nav>
@@ -36,209 +44,321 @@
           <li><a href="#additional" class="link">Contact</a></li>
         </ul>
       </nav> -->
-      <div id="hamburger-icon">
+      <div
+        id="hamburger-icon"
+        role="button"
+        tabindex="0"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
-        <ul class="mobile-menu">
-          <li><a href="#" class="link">Home</a></li>
+        <ul class="mobile-menu" id="mobile-menu">
+          <li><a href="#home" class="link">Home</a></li>
+          <li><a href="#featured" class="link">Featured Work</a></li>
+          <li><a href="#work" class="link">Work Experience</a></li>
+          <li><a href="#skills" class="link">Skills</a></li>
           <li><a href="#about" class="link">About</a></li>
-          <li><a href="#project" class="link">Projects</a></li>
           <li><a href="#additional" class="link">Contact</a></li>
         </ul>
       </div>
     </header>
+    <button class="section-arrow" id="section-arrow" aria-label="Go to next section">
+      <span class="material-icons" id="section-arrow-icon">keyboard_arrow_down</span>
+    </button>
     <main>
-      <div class="introduction">
+      <div class="introduction" id="home">
         <div class="intro-flex">
-          <div class="typing-container1">
-            <h1 id="intro-title">Hello, I am Jason Yap</h1>
-          </div>
-          <div class="typing-container2">
-            <p id="intro-description">Front-End Developer</p>
+          <h1 id="intro-title">Hello, I am Jason Yap</h1>
+          <p id="intro-description">I enjoy building responsive, user-friendly web apps with React and TypeScript.</p>
+          <div class="hero-cta">
+            <a href="#featured" class="btn-primary">View Projects</a>
           </div>
         </div>
       </div>
+      <section class="featured" id="featured">
+        <h2>Featured Work</h2>
+        <div class="featured-grid">
+          <article class="featured-card">
+            <img src="images/clock.png" alt="Real Time Clock project preview" loading="lazy" decoding="async" />
+            <h3>Real Time Clock</h3>
+            <p>
+              Built a live clock UI with JavaScript logic and CSS-styled clock hands.
+            </p>
+            <a href="https://github.com/JasonYap0519/JavaScript-Real-Time-Clock" target="_blank" rel="noopener noreferrer" class="text-link">Source Code</a>
+          </article>
+          <article class="featured-card">
+            <img src="images/dice.png" alt="Dice game project preview" loading="lazy" decoding="async" />
+            <h3>Dice Game</h3>
+            <p>
+              Developed a two-player turn-based game with custom game rules and state handling.
+            </p>
+            <a href="https://github.com/JasonYap0519/JavaScript-Dice-Game" target="_blank" rel="noopener noreferrer" class="text-link">Source Code</a>
+          </article>
+          <article class="featured-card">
+            <img src="images/rpms.png" alt="Remote Patient Monitoring System project preview" loading="lazy" decoding="async" />
+            <h3>Remote Patient Monitoring System</h3>
+            <p>
+              Worked on front-end healthcare interfaces and connected pages with HTTP requests.
+            </p>
+            <span class="text-link muted">Private Project</span>
+          </article>
+        </div>
+      </section>
+      <section class="work" id="work">
+        <h2>Work Experience</h2>
+        <div class="work-carousel">
+          <button class="work-nav-btn" id="work-prev" aria-label="Previous work experience">
+            <span class="material-icons">chevron_left</span>
+          </button>
+          <div class="work-viewport">
+            <div class="work-grid" id="work-grid">
+              <article class="work-card">
+                <div class="work-header">
+                  <span class="company-logo company-logo-kreloses" aria-hidden="true">
+                    <img src="images/kreloses.jpg" alt="" />
+                  </span>
+                  <h3>Front-End Developer</h3>
+                </div>
+                <p class="work-meta">Kreloses</p>
+                <p class="work-submeta">Kota Damansara, Selangor | Jan 2025 - Present</p>
+                <div class="work-stack">
+                  <span class="stack-chip">React</span>
+                  <span class="stack-chip">TypeScript</span>
+                  <span class="stack-chip">SCSS</span>
+                </div>
+                <div class="work-body">
+                  <div class="work-body-content">
+                    <h4 class="work-section-title">Key Contributions</h4>
+                    <ul class="work-list">
+                      <li>
+                        Led a team of developers to redesign the system GUI and
+                        simplify legacy user workflows.
+                      </li>
+                      <li>
+                        Restyled legacy interfaces into a modern, consistent
+                        design system using React, TypeScript, and SCSS.
+                      </li>
+                      <li>
+                        Mobilized key screens for better accessibility across
+                        mobile and tablet devices.
+                      </li>
+                      <li>
+                        Localized system text to support multiple languages
+                        based on user language settings.
+                      </li>
+                      <li>
+                        Contributed to frontend delivery for a Zoetis integration
+                        configuration screen, enabling seamless pet scanner
+                        connectivity within Kreloses's clinic management system.
+                      </li>
+                      <li>
+                        Partnered with a senior engineer to build frontend
+                        features for a new Installment Plan module designed for
+                        dental clinic workflows.
+                      </li>
+                      <li>
+                        Collaborated with the Marketing team to improve the
+                        Kreloses marketing website experience and presentation.
+                      </li>
+                      <li>
+                        Conducted code reviews to maintain code quality,
+                        consistency, and frontend best practices across the team.
+                      </li>
+                    </ul>
+                  </div>
+                  <img
+                    class="work-photo"
+                    src="images/kreloses_workphoto.jpg"
+                    alt="Kreloses work experience"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </article>
+              <article class="work-card">
+                <div class="work-header">
+                  <span class="company-logo company-logo-wf" aria-hidden="true">
+                    <img src="images/wellsfargo.png" alt="" />
+                  </span>
+                  <h3>React Developer</h3>
+                </div>
+                <p class="work-meta">Wells Fargo - Online Sales & Marketing Platform</p>
+                <p class="work-submeta">San Francisco, CA | Feb 2023 - Jun 2024</p>
+                <div class="work-stack">
+                  <span class="stack-chip">React</span>
+                  <span class="stack-chip">JavaScript</span>
+                  <span class="stack-chip">TypeScript</span>
+                  <span class="stack-chip">Redux-Saga</span>
+                  <span class="stack-chip">CucumberJS</span>
+                </div>
+                <div class="work-body">
+                  <div class="work-body-content">
+                    <h4 class="work-section-title">Key Contributions</h4>
+                    <ul class="work-list">
+                      <li>
+                        Built and maintained React features for Wells Fargo's
+                        lending application, improving user flow and usability.
+                      </li>
+                      <li>
+                        Integrated frontend components with backend APIs and
+                        delivered termination page redirection using Redux-Saga
+                        with CMS messages.
+                      </li>
+                      <li>
+                        Partnered with the Figma design team to translate
+                        wireframes into production-ready user interfaces.
+                      </li>
+                      <li>
+                        Implemented address standardization with React Hooks to
+                        validate user-entered addresses and improve form data
+                        accuracy.
+                      </li>
+                      <li>
+                        Automated cross-browser and mobile UI testing with
+                        Selenium using CucumberJS.
+                      </li>
+                      <li>
+                        Coordinated with offshore frontend leads in India to
+                        keep code merges and releases on schedule.
+                      </li>
+                      <li>
+                        Supported onboarding and knowledge transfer for new
+                        frontend engineers to accelerate ramp-up.
+                      </li>
+                      <li>
+                        Contributed TypeScript features to the Release Calendar
+                        UI used by production release managers for deployment
+                        planning.
+                      </li>
+                    </ul>
+                  </div>
+                  <img
+                    class="work-photo"
+                    src="images/wellsfargo_workphoto.jpg"
+                    alt="Wells Fargo work experience"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </article>
+            </div>
+          </div>
+          <button class="work-nav-btn" id="work-next" aria-label="Next work experience">
+            <span class="material-icons">chevron_right</span>
+          </button>
+        </div>
+        <div class="work-mobile-controls" aria-label="Work experience controls">
+          <button class="work-mobile-btn" id="work-prev-mobile" aria-label="Previous work experience">Prev</button>
+          <span class="work-counter" id="work-counter">1 / 2</span>
+          <button class="work-mobile-btn" id="work-next-mobile" aria-label="Next work experience">Next</button>
+        </div>
+      </section>
+      <section class="skills" id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <article class="skills-card">
+            <h3>Core Frontend</h3>
+            <ul class="skills-tags">
+              <li>HTML5</li>
+              <li>CSS3 / SCSS</li>
+              <li>JavaScript (ES6+)</li>
+              <li>TypeScript</li>
+              <li>Responsive Design</li>
+            </ul>
+          </article>
+          <article class="skills-card">
+            <h3>Frameworks & Libraries</h3>
+            <ul class="skills-tags">
+              <li>React</li>
+              <li>Redux-Saga</li>
+              <li>Bootstrap</li>
+            </ul>
+          </article>
+          <article class="skills-card">
+            <h3>Tools</h3>
+            <ul class="skills-tags">
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>VS Code</li>
+              <li>Figma</li>
+              <li>Chrome DevTools</li>
+            </ul>
+          </article>
+          <article class="skills-card">
+            <h3>Workflow Strengths</h3>
+            <ul class="skills-tags">
+              <li>Component-Based UI</li>
+              <li>API Integration</li>
+              <li>Cross-Browser Testing</li>
+              <li>Code Reviews</li>
+              <li>Team Collaboration</li>
+            </ul>
+          </article>
+        </div>
+      </section>
       <section class="about" id="about">
         <div class="description">
           <h2>About Me</h2>
           <p>
-            Being as a Computer Science Student, I got to learn a variety of
-            programming languages, where I found my interests on front-end
-            development. The exposure of front-end development had bring me an
-            tremendous impact on my journey. I believe that it is important to
-            deliver a product that cater towards clients' needs. Besides, I
-            enjoy designing visuals that are aesthetically pleasing and
-            professional.
+            As a Computer Science graduate, I explored a range of programming
+            languages and found my strongest interest in front-end development.
+            Building user interfaces has had a major impact on my career
+            direction. I focus on delivering products that align with client
+            goals and user needs, while creating visuals that feel clean,
+            professional, and easy to use.
           </p>
         </div>
         <div class="photo">
-          <img src="images/jasonyap.jpg" alt="" />
+          <img src="images/ming.jpg" alt="Portrait of Jason Yap" loading="lazy" decoding="async" />
         </div>
       </section>
-      <section class="project" id="project">
-        <h2>Projects</h2>
-        <div class="project-flex">
-          <div class="image-wrap">
-            <img src="images/clock.png" alt="" width="320" height="320" />
-            <div class="image-content">
-              <h3 class="project-title-md">Real Time Clock</h3>
-              <p>
-                Implemented a real time clock system using
-                <strong>Javascript</strong>
-                for functionalities and
-                <strong>CSS</strong>
-                to design the entire clock, applying different styles to its
-                hour hand, minute hand, and second hand.
-              </p>
-              <p>
-                <a
-                  href="https://github.com/JasonYap0519/JavaScript-Real-Time-Clock"
-                  target="_blank"
-                  class="link"
-                  id="project-link"
-                  >Source Code</a
-                >
-              </p>
-            </div>
-            <h3 class="project-title-lg">Real Time Clock</h3>
-          </div>
-
-          <div class="image-wrap">
-            <img src="images/dice.png" alt="" width="320" height="320" />
-            <div class="image-content">
-              <h3 class="project-title-md">Dice Game</h3>
-              <p>
-                A turn-based two player game which uses
-                <strong>Javascript</strong> to create game logic. Applied
-                <strong>CSS</strong> to create user interface.
-              </p>
-              <p>
-                <a
-                  href="https://github.com/JasonYap0519/JavaScript-Dice-Game"
-                  target="_blank"
-                  class="link"
-                  id="project-link"
-                  >Source Code</a
-                >
-              </p>
-            </div>
-            <h3 class="project-title-lg">Dice Game</h3>
-          </div>
-          <div class="image-wrap">
-            <img src="images/guess.png" alt="" width="320" height="320" />
-            <div class="image-content">
-              <h3 class="project-title-md">Guessing Game</h3>
-              <p>
-                A simple <strong>Javascript</strong> game where users have to
-                guess the correct number. Hints will be given if the player
-                guesses wrong and the correct number will be reseted once the
-                page is refreshed.
-              </p>
-              <p>
-                <a
-                  href="https://github.com/JasonYap0519/JavaScript-Guessing-Game"
-                  target="_blank"
-                  class="link"
-                  id="project-link"
-                  >Source Code</a
-                >
-              </p>
-            </div>
-            <h3 class="project-title-lg">Guessing Game</h3>
-          </div>
-          <div class="image-wrap">
-            <img src="images/rpms.png" alt="" width="320" height="320" />
-            <div class="image-content">
-              <h3 class="project-title-md">Remote Patient Monitoring System</h3>
-              <p>
-                A school project that monitors patient's health condition.
-                Worked on the front-end team to design the UIs with
-                <strong>Bootstrap</strong> and uses HTTP request methods to
-                manipulate data from the server side.
-              </p>
-              <p>
-                <a
-                  class="link"
-                  id="project-link"
-                  style="
-                    pointer-events: none;
-                    text-decoration: none;
-                    color: grey;
-                  "
-                  >Private</a
-                >
-              </p>
-            </div>
-            <h3 class="project-title-lg">Remote Patient Monitoring System</h3>
-          </div>
-          <div class="image-wrap">
-            <img src="images/portfolio.png" alt="" width="320" height="320" />
-            <div class="image-content">
-              <h3 class="project-title-md">Portfolio Website</h3>
-              <p>
-                Created this website to showcase previous projects and some
-                basic information about myself. This website is created using
-                <strong>HTML</strong> and <strong>CSS</strong>.
-              </p>
-            </div>
-            <h3 class="project-title-lg">Portfolio Website</h3>
-          </div>
+      <section class="highlights" id="highlights">
+        <h2>Highlights</h2>
+        <div class="highlight-list">
+          <ul>
+            <li>2 production front-end roles across healthcare and fintech platforms.</li>
+            <li>3 featured JavaScript projects built from scratch with responsive layouts.</li>
+            <li>Delivered multilingual support and mobile-ready improvements for key user workflows.</li>
+          </ul>
         </div>
       </section>
-
       <section class="additional" id="additional">
-        <div class="contact">
+        <div class="contact-panel">
           <h2>Contact</h2>
-          <form action="https://formspree.io/f/myyowkor" method="POST">
-            <div>
-              <label for="name">Name</label>
-              <input type="text" name="name" id="name" placeholder="Name" />
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input type="email" name="email" id="email" placeholder="Email" />
-            </div>
-            <textarea
-              name="message"
-              id="message"
-              cols="30"
-              rows="10"
-              placeholder="Leave your message here"
-            ></textarea>
-            <button type="submit" class="submit" id="submit">Submit</button>
-          </form>
-        </div>
-        <div class="social">
-          <div class="social-media">
-            <h2>Check me out on</h2>
-            <ul>
-              <li>
-                <a href="https://www.linkedin.com/in/jason-yap-561156207/"
-                  ><img src="images/linkedin.png" alt=""
-                /></a>
-              </li>
-              <li>
-                <a href="https://github.com/JasonYap0519"
-                  ><img src="images/github.png" alt=""
-                /></a>
-              </li>
-            </ul>
+          <p class="contact-subtitle">Open to frontend opportunities and collaboration.</p>
+          <div class="email-heading">
+            <span class="material-icons" aria-hidden="true">mail</span>
+            <span>Email</span>
           </div>
-          <div class="my-resume">
-            <h2>Additional Information</h2>
-            <button
-              class="resume"
-              onclick="location.href='https://drive.google.com/file/d/1KQtk438ies7-CBQxZK8_utdbTOZmyqBu/view?usp=sharing'"
-            >
-              My Resume
+          <div class="email-row">
+            <a class="email-link" href="mailto:jasonyap3208@gmail.com?subject=Portfolio%20Inquiry">jasonyap3208@gmail.com</a>
+            <button type="button" class="email-copy-btn" id="copy-email-btn" data-email="jasonyap3208@gmail.com">
+              Copy email
             </button>
           </div>
+          <p class="contact-note">You can also find me on:</p>
+          <ul class="contact-links">
+            <li>
+              <a href="https://www.linkedin.com/in/jason-yap-561156207/" target="_blank" rel="noopener noreferrer" aria-label="Visit Jason Yap on LinkedIn">
+                <img src="images/linkedin.png" alt="LinkedIn" loading="lazy" decoding="async" />
+                <span>LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/JasonYap0519" target="_blank" rel="noopener noreferrer" aria-label="Visit Jason Yap on GitHub">
+                <img src="images/github.png" alt="GitHub" loading="lazy" decoding="async" />
+                <span>GitHub</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
       <footer>
         <div class="copyright">
-          &copy; 2022 | Designed & Implemented by Jason Yap
+          &copy; 2026 | Designed & Implemented by Jason Yap
         </div>
       </footer>
     </main>

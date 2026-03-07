@@ -1,94 +1,246 @@
 "use strict";
 
-// reset contact form after submitting
-var form = document.getElementById("my-form");
+const hamburgerIcon = document.getElementById("hamburger-icon");
+const mobileMenu = document.getElementById("mobile-menu");
 
-window.onbeforeunload = () => {
-  for (const form of document.getElementsByTagName("form")) {
-    form.reset();
+function setMenuOpen(isOpen) {
+  if (!hamburgerIcon) {
+    return;
   }
-};
 
-// function for toggling hamburger dropdown
-// function toggleMenu(menu) {
-//   menu.classList.toggle("open");
-// }
+  hamburgerIcon.classList.toggle("open", isOpen);
+  hamburgerIcon.setAttribute("aria-expanded", String(isOpen));
+}
 
-$("#hamburger-icon").click(function () {
-  $("#hamburger-icon").toggleClass("open");
-
-  $(".mobile-menu").click(function (e) {
-    e.stopPropagation();
-  });
-});
-
-$(document).click(function (e) {
-  const menu = $("#hamburger-icon");
-  // if the event target is not the menu and its open
-  if (
-    !menu.is(e.target) &&
-    menu.has(e.target).length === 0 &&
-    menu.hasClass("open")
-  ) {
-    $("#hamburger-icon").toggleClass("open");
-
-    // the event target id is the header, the menu stays open
-    if (e.target.id === "header") {
-      $("#hamburger-icon").toggleClass("open");
+if (hamburgerIcon && mobileMenu) {
+  hamburgerIcon.addEventListener("click", (e) => {
+    if (mobileMenu.contains(e.target)) {
+      return;
     }
+    setMenuOpen(!hamburgerIcon.classList.contains("open"));
+  });
+
+  hamburgerIcon.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setMenuOpen(!hamburgerIcon.classList.contains("open"));
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!hamburgerIcon.contains(e.target)) {
+      setMenuOpen(false);
+    }
+  });
+}
+
+const copyEmailBtn = document.getElementById("copy-email-btn");
+if (copyEmailBtn) {
+  copyEmailBtn.addEventListener("click", async () => {
+    const email = copyEmailBtn.getAttribute("data-email");
+    if (!email) {
+      return;
+    }
+
+    const originalText = copyEmailBtn.textContent;
+    let copied = false;
+
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(email);
+        copied = true;
+      } catch (error) {
+        copied = false;
+      }
+    }
+
+    if (!copied) {
+      const helper = document.createElement("textarea");
+      helper.value = email;
+      helper.setAttribute("readonly", "");
+      helper.style.position = "absolute";
+      helper.style.left = "-9999px";
+      document.body.appendChild(helper);
+      helper.select();
+      copied = document.execCommand("copy");
+      document.body.removeChild(helper);
+    }
+
+    copyEmailBtn.textContent = copied ? "Copied!" : "Copy failed";
+    window.setTimeout(() => {
+      copyEmailBtn.textContent = originalText;
+    }, 1400);
+  });
+}
+
+const sectionIds = [
+  "home",
+  "featured",
+  "work",
+  "skills",
+  "about",
+  "highlights",
+  "additional",
+];
+const navLinks = document.querySelectorAll('a.link[href^="#"]');
+const sectionArrow = document.getElementById("section-arrow");
+const sectionArrowIcon = document.getElementById("section-arrow-icon");
+let currentSectionId = "home";
+let pendingSectionId = null;
+
+function scrollToSection(id) {
+  const targetSection = document.getElementById(id);
+  if (!targetSection) {
+    return;
   }
-});
 
-$(".link").click(function () {
-  $("#hamburger-icon").toggleClass("open");
-});
+  pendingSectionId = id;
+  targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
-// sticky header functionality
-window.onscroll = function () {
-  toggleSticky();
-};
+function setActiveSection(id) {
+  currentSectionId = id;
 
-let header = document.getElementById("header");
-let sticky = header.offsetTop;
+  navLinks.forEach((link) => {
+    const hrefId = link.getAttribute("href").replace("#", "");
+    const isActive = hrefId === id;
+    link.classList.toggle("active-link", isActive);
+    if (isActive) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
 
-function toggleSticky() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
+  if (sectionArrow && sectionArrowIcon) {
+    const isLast = sectionIds[sectionIds.length - 1] === id;
+    sectionArrowIcon.textContent = isLast
+      ? "keyboard_arrow_up"
+      : "keyboard_arrow_down";
+    sectionArrow.setAttribute(
+      "aria-label",
+      isLast ? "Go to top section" : "Go to next section"
+    );
   }
 }
 
-// console.log(navbar);
-// async function handleSubmit(event) {
-//   event.preventDefault();
-//   var status = document.getElementById("my-form-status");
-//   var data = new FormData(event.target);
-//   fetch(event.target.action, {
-//     method: form.method,
-//     body: data,
-//     headers: {
-//       Accept: "application/json",
-//     },
-//   })
-//     .then((response) => {
-//       if (response.ok) {
-//         status.innerHTML = "Thanks for your submission!";
-//         form.reset();
-//       } else {
-//         response.json().then((data) => {
-//           if (Object.hasOwn(data, "errors")) {
-//             status.innerHTML = data["errors"]
-//               .map((error) => error["message"])
-//               .join(", ");
-//           } else {
-//             status.innerHTML = "Oops! There was a problem submitting your form";
-//           }
-//         });
-//       }
-//     })
-//     .catch((error) => {
-//       status.innerHTML = "Oops! There was a problem submitting your form";
-//     });
-// }
-// form.addEventListener("submit", handleSubmit);
+setActiveSection("home");
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const href = link.getAttribute("href");
+    if (!href || !href.startsWith("#")) {
+      return;
+    }
+
+    e.preventDefault();
+    scrollToSection(href.slice(1));
+    setMenuOpen(false);
+  });
+});
+
+const visibleSections = new Map();
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        visibleSections.set(entry.target.id, entry.intersectionRatio);
+      } else {
+        visibleSections.delete(entry.target.id);
+      }
+    });
+
+    if (visibleSections.size > 0) {
+      const sortedVisible = [...visibleSections.entries()].sort(
+        (a, b) => b[1] - a[1]
+      );
+      const activeId = sortedVisible[0][0];
+
+      if (pendingSectionId) {
+        const pendingRatio = visibleSections.get(pendingSectionId) || 0;
+        if (pendingRatio >= 0.55) {
+          setActiveSection(pendingSectionId);
+          pendingSectionId = null;
+        }
+        return;
+      }
+
+      setActiveSection(activeId);
+    }
+  },
+  {
+    threshold: [0.35, 0.6, 0.85],
+    rootMargin: "-72px 0px -20% 0px",
+  }
+);
+
+sectionIds.forEach((id) => {
+  const sectionEl = document.getElementById(id);
+  if (sectionEl) {
+    sectionObserver.observe(sectionEl);
+  }
+});
+
+if (sectionArrow) {
+  sectionArrow.addEventListener("click", function () {
+    const currentIndex = sectionIds.indexOf(currentSectionId);
+    const isLast = currentIndex === sectionIds.length - 1;
+    const targetId = isLast ? sectionIds[0] : sectionIds[currentIndex + 1];
+    scrollToSection(targetId);
+  });
+}
+
+const workGrid = document.getElementById("work-grid");
+const workPrev = document.getElementById("work-prev");
+const workNext = document.getElementById("work-next");
+const workPrevMobile = document.getElementById("work-prev-mobile");
+const workNextMobile = document.getElementById("work-next-mobile");
+const workCounter = document.getElementById("work-counter");
+
+if (workGrid && workPrev && workNext) {
+  const workCards = workGrid.querySelectorAll(".work-card");
+  let workIndex = 0;
+
+  function renderWorkSlide() {
+    workGrid.style.transform = `translateX(-${workIndex * 100}%)`;
+    if (workCounter) {
+      workCounter.textContent = `${workIndex + 1} / ${workCards.length}`;
+    }
+  }
+
+  function moveWorkSlide(step) {
+    const total = workCards.length;
+    workIndex = (workIndex + step + total) % total;
+    renderWorkSlide();
+  }
+
+  workPrev.addEventListener("click", () => moveWorkSlide(-1));
+  workNext.addEventListener("click", () => moveWorkSlide(1));
+  if (workPrevMobile && workNextMobile) {
+    workPrevMobile.addEventListener("click", () => moveWorkSlide(-1));
+    workNextMobile.addEventListener("click", () => moveWorkSlide(1));
+  }
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+  workGrid.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+    },
+    { passive: true }
+  );
+  workGrid.addEventListener(
+    "touchend",
+    (e) => {
+      touchEndX = e.changedTouches[0].clientX;
+      const deltaX = touchEndX - touchStartX;
+      if (Math.abs(deltaX) > 40) {
+        moveWorkSlide(deltaX > 0 ? -1 : 1);
+      }
+    },
+    { passive: true }
+  );
+
+  renderWorkSlide();
+}
