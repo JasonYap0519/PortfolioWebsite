@@ -85,8 +85,17 @@ const sectionIds = [
 const navLinks = document.querySelectorAll('a.link[href^="#"]');
 const sectionArrow = document.getElementById("section-arrow");
 const sectionArrowIcon = document.getElementById("section-arrow-icon");
+const HEADER_OFFSET = 72;
+const TARGET_LOCK_MS = 1500;
+const TARGET_ALIGNMENT_TOLERANCE = 24;
 let currentSectionId = "home";
-let pendingSectionId = null;
+let programmaticTargetId = null;
+let programmaticScrollUntil = 0;
+
+function clearProgrammaticTarget() {
+  programmaticTargetId = null;
+  programmaticScrollUntil = 0;
+}
 
 function scrollToSection(id) {
   const targetSection = document.getElementById(id);
@@ -94,7 +103,9 @@ function scrollToSection(id) {
     return;
   }
 
-  pendingSectionId = id;
+  programmaticTargetId = id;
+  programmaticScrollUntil = Date.now() + TARGET_LOCK_MS;
+  setActiveSection(id);
   targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
@@ -102,7 +113,7 @@ function setActiveSection(id) {
   currentSectionId = id;
 
   navLinks.forEach((link) => {
-    const hrefId = link.getAttribute("href").replace("#", "");
+    const hrefId = (link.getAttribute("href") || "").replace("#", "");
     const isActive = hrefId === id;
     link.classList.toggle("active-link", isActive);
     if (isActive) {
@@ -156,13 +167,23 @@ const sectionObserver = new IntersectionObserver(
       );
       const activeId = sortedVisible[0][0];
 
-      if (pendingSectionId) {
-        const pendingRatio = visibleSections.get(pendingSectionId) || 0;
-        if (pendingRatio >= 0.55) {
-          setActiveSection(pendingSectionId);
-          pendingSectionId = null;
+      if (programmaticTargetId) {
+        const targetSection = document.getElementById(programmaticTargetId);
+        if (targetSection) {
+          const topDelta = Math.abs(
+            targetSection.getBoundingClientRect().top - HEADER_OFFSET
+          );
+          if (topDelta <= TARGET_ALIGNMENT_TOLERANCE) {
+            setActiveSection(programmaticTargetId);
+            clearProgrammaticTarget();
+          } else if (Date.now() < programmaticScrollUntil) {
+            return;
+          } else {
+            clearProgrammaticTarget();
+          }
+        } else {
+          clearProgrammaticTarget();
         }
-        return;
       }
 
       setActiveSection(activeId);
@@ -170,7 +191,7 @@ const sectionObserver = new IntersectionObserver(
   },
   {
     threshold: [0.35, 0.6, 0.85],
-    rootMargin: "-72px 0px -20% 0px",
+    rootMargin: `-${HEADER_OFFSET}px 0px -20% 0px`,
   }
 );
 

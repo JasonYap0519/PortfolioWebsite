@@ -176,6 +176,17 @@ header a {
   gap: 12px;
 }
 
+.mobile-menu .link {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+
+.mobile-menu .link.active-link {
+  background: rgba(200, 168, 107, 0.2);
+}
+
 .open .mobile-menu {
   display: flex;
 }
@@ -453,7 +464,6 @@ header a {
   background: linear-gradient(145deg, #2b3140, #1b2231);
   color: #e9dcc4;
 }
-
 
 .work-meta {
   margin: 4px 0 10px;
@@ -767,6 +777,12 @@ header a {
   .skills-grid {
     grid-template-columns: 1fr;
   }
+
+  .about .photo {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
 }
 
 @media (max-width: 600px) {
@@ -795,7 +811,6 @@ header a {
   .photo img {
     width: min(260px, 88vw);
   }
-
 }
 
 @media (max-width: 900px) {
